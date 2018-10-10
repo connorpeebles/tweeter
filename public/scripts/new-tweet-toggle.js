@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 
   $("#nav-bar button").click(function() {
     $(".new-tweet").slideToggle(function() {
