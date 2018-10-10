@@ -27,19 +27,24 @@
 
     <script>
       $(function() {
-        var $form = $(".new-tweet form");
+        let $form = $(".new-tweet form");
 
-        $form.submit(function () {
+        $form.submit(function() {
           event.preventDefault();
           let data = ($(this).serialize());
+          let counter = parseInt($(this).children(".counter").text());
 
-          $.post("/tweets/", data)
-           .then(function() {
-            console.log("Success: ", data);
-           })
-           .fail(function() {
+          if (counter === 140) {
             alert("Please enter a tweet before submitting.");
-           });
+          } else if (counter < 0) {
+            alert("Your tweet is too long.");
+          } else {
+            $.post("/tweets/", data)
+             .fail(function() {
+                alert("An error occurred.");
+              })
+            ;
+          }
         });
       });
     </script>
