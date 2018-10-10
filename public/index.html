@@ -39,11 +39,9 @@
           } else if (counter < 0) {
             alert("Your tweet is too long.");
           } else {
+            $(this).children("textarea").val("");
             $.post("/tweets/", data)
-             .then(function() {
-                $(".new-tweet textarea").val("");
-                refreshTweets();
-              })
+             .then(refreshTweets)
              .fail(function() {
                 alert("An error occurred.");
               })

@@ -12,15 +12,20 @@ var refreshTweets = function () {
     const curMs = curDate.getTime();
     const msDif = curMs - ms;
 
-    const hrDif = msDif / 1000 / 60 /60;
+    const minDif = msDif / 1000 / 60;
+    const hrDif = minDif / 60;
     const dayDif = hrDif / 24;
     const weekDif = dayDif / 7;
     const yearDif = weekDif / 52;
 
     let time;
 
-    if (hrDif < 1) {
-      time = "less than 1 hour ago";
+    if (minDif < 1) {
+      time = "less than 1 minute ago";
+    } else if (minDif < 2) {
+      time = "1 minute ago";
+    } else if (minDif < 60) {
+      time = `${Math.floor(minDif)} minutes ago`;
     } else if (hrDif < 2) {
       time = "1 hour ago";
     } else if (hrDif < 24) {
