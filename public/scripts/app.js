@@ -1,4 +1,4 @@
-(function () {
+var refreshTweets = function () {
 
   function createTweetElement(tweet) {
 
@@ -62,9 +62,11 @@
   }
 
   function renderTweets(tweetArr){
+    let $section = $("#cur-tweets");
+    $section.empty();
 
-    for (let tweet of tweetArr) {
-      let $article = createTweetElement(tweet);
+    for (let i = tweetArr.length - 1; i >= 0; i--) {
+      let $article = createTweetElement(tweetArr[i]);
       $("#cur-tweets").append($article);
     }
   }
@@ -76,4 +78,6 @@
 
   loadTweets();
 
-})();
+};
+
+refreshTweets();

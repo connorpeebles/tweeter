@@ -40,6 +40,7 @@
             alert("Your tweet is too long.");
           } else {
             $.post("/tweets/", data)
+             .then(refreshTweets)
              .fail(function() {
                 alert("An error occurred.");
               })
