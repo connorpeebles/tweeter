@@ -24,6 +24,26 @@
 
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+
+    <script>
+      $(function() {
+        var $form = $(".new-tweet form");
+
+        $form.submit(function () {
+          event.preventDefault();
+          let data = ($(this).serialize());
+
+          $.post("/tweets/", data)
+           .then(function() {
+            console.log("Success: ", data);
+           })
+           .fail(function() {
+            alert("Please enter a tweet before submitting.");
+           });
+        });
+      });
+    </script>
+
   </head>
 
   <body>
