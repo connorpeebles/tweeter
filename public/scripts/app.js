@@ -47,20 +47,23 @@ var refreshTweets = function () {
     let $article = $("<article>").addClass("tweet");
 
     $article.append(`
-
       <header>
         <img class="avatar" src=${avatar}>
         <h3>${name}</h3>
         <span class="handle">${handle}</span>
       </header>
-      <p>${text}</p>
+    `);
+
+    let $p = $("<p>").text(text);
+    $article.append($p);
+
+    $article.append(`
       <footer>
         <span>${time}</span>
         <ion-icon class="icon" name="heart"></ion-icon>
         <ion-icon class="icon" name="repeat"></ion-icon>
         <ion-icon class="icon" name="flag"></ion-icon>
       </footer>
-
     `);
 
     return $article;
