@@ -6,22 +6,29 @@ $(function() {
     let data = $(this).serialize();
     let $counter = $(this).children(".counter");
     let counter = parseInt($counter.text());
+    let $error = $(this).children(".error");
 
-    if (counter === 140) {
-      alert("Please enter a tweet before submitting.");
-    } else if (counter < 0) {
-      alert("Your tweet is too long.");
-    } else {
-      $(this).children("textarea").val("");
-      $.post("/tweets/", data)
-       .then(function() {
-          refreshTweets();
-          $counter.text(140);
-        })
-       .fail(function() {
-          alert("An error occurred.");
-        })
-      ;
-    }
+    $error.slideUp(function() {
+
+      if (counter === 140) {
+        $error.text("Please enter a tweet before submitting.")
+              .slideDown();
+      } else if (counter < 0) {
+        $error.text(
+          "Your tweet is too long.")
+              .slideDown();
+      } else {
+        $(this).siblings("textarea").val("");
+        $.post("/tweets/", data)
+         .then(function() {
+            refreshTweets();
+            $counter.text(140);
+          })
+         .fail(function() {
+            alert("An error occurred.");
+          })
+        ;
+      }
+    });
   });
 });

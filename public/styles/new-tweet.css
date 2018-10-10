@@ -7,12 +7,21 @@
 }
 
 .new-tweet h2 {
-  margin-top: 0;
+  margin-top: 0px;
   border-bottom: solid 1px;
 }
 
 .new-tweet textarea {
   width: 100%;
+}
+
+.new-tweet .error {
+  background: #F4A6A6;
+  color: #8B0000;
+  margin-top: 0;
+  padding: 5px;
+  border: solid 1px #8B0000;
+  display: none;
 }
 
 .new-tweet .counter {
