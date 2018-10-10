@@ -25,15 +25,24 @@
     <!-- External JS -->
     <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
 
+    <!-- Char-Counter JS -->
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+
+    <!-- New-Tweet-Toggle JS -->
+    <script type="text/javascript" src="/scripts/new-tweet-toggle.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+
     <script>
       $(function() {
         let $form = $(".new-tweet form");
 
         $form.submit(function() {
           event.preventDefault();
-          // let data = ($(this).serialize());
           let data = $(this).serialize();
-          let counter = parseInt($(this).children(".counter").text());
+          let $counter = $(this).children(".counter");
+          let counter = parseInt($counter.text());
 
           if (counter === 140) {
             alert("Please enter a tweet before submitting.");
@@ -42,7 +51,10 @@
           } else {
             $(this).children("textarea").val("");
             $.post("/tweets/", data)
-             .then(refreshTweets)
+             .then(function() {
+                refreshTweets();
+                $counter.text(140);
+              })
              .fail(function() {
                 alert("An error occurred.");
               })
@@ -61,7 +73,7 @@
       <img class="logo" src="/images/bird.png">
       <span class="header">Tweeter</span>
       <button class="compose">
-        <span> Compose</span>
+        <span>Compose</span>
       </button>
     </nav>
 
@@ -83,15 +95,6 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
-
-    <!-- Char-Counter JS -->
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
-    <!-- New-Tweet-Toggle JS -->
-    <script type="text/javascript" src="/scripts/new-tweet-toggle.js"></script>
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
 
   </body>
 </html>
