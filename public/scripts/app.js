@@ -1,12 +1,14 @@
 var refreshTweets = function () {
 
-  function createTweetElement(tweet) {
+  function createTweetElement(tweet, index) {
 
     const avatar = tweet.user.avatars.small;
     const name = tweet.user.name;
     const handle = tweet.user.handle;
     const text = tweet.content.text;
     const ms = tweet.created_at;
+    const likes = tweet.likes;
+    const retweets = tweet.retweets;
 
     const curDate = new Date();
     const curMs = curDate.getTime();
@@ -59,10 +61,13 @@ var refreshTweets = function () {
 
     $article.append(`
       <footer>
-        <span>${time}</span>
-        <ion-icon class="icon" name="heart"></ion-icon>
-        <ion-icon class="icon" name="repeat"></ion-icon>
-        <ion-icon class="icon" name="flag"></ion-icon>
+        <form class="form-likes" method="POST" action="/tweets/${index}">
+          <span>${time}</span>
+          <span class="icon likes">${likes}</span>
+          <ion-icon class="icon likes" name="heart"></ion-icon>
+          <ion-icon class="icon" name="repeat"></ion-icon>
+          <ion-icon class="icon" name="flag"></ion-icon>
+        </form>
       </footer>
     `);
 
@@ -74,7 +79,8 @@ var refreshTweets = function () {
     $section.empty();
 
     for (let i = tweetArr.length - 1; i >= 0; i--) {
-      let $article = createTweetElement(tweetArr[i]);
+      console.log(tweetArr[i]);
+      let $article = createTweetElement(tweetArr[i], i);
       $("#cur-tweets").append($article);
     }
   }

@@ -30,7 +30,9 @@ module.exports = function(DataHelpers) {
       content: {
         text: req.body.text
       },
-      created_at: Date.now()
+      created_at: Date.now(),
+      likes: 0,
+      retweets: 0
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
@@ -42,5 +44,25 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  tweetsRoutes.post("/:index", function(req, res) {
+    const index = req.params.index;
+    console.log(index);
+
+    DataHelpers.getTweets((err, tweets) => {
+      let tweet = tweets[index];
+
+      DataHelpers.updateTweet(tweet);
+
+    });
+
+
+    // const tweets = DataHelpers.getTweets((err, tweets) => {
+    //   return json(tweets[index]);
+    // });
+    // console.log("index:", index);
+    // console.log("tweets:", typeof(tweets));
+
+  });
+
   return tweetsRoutes;
-}
+};
