@@ -1,3 +1,4 @@
+
 "use strict";
 
 const userHelper    = require("../lib/util/user-helper")
@@ -42,5 +43,4 @@ module.exports = function(DataHelpers) {
   });
 
   return tweetsRoutes;
-
 }
