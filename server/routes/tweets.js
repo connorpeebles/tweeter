@@ -55,6 +55,8 @@ module.exports = function(DataHelpers) {
 
     });
 
+    res.status(200).send();
+
 
     // const tweets = DataHelpers.getTweets((err, tweets) => {
     //   return json(tweets[index]);
