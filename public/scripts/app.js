@@ -63,13 +63,17 @@ var refreshTweets = function () {
       <footer>
         <form class="form-likes" method="POST" action="/tweets/${index}?_method=PUT">
           <span>${time}</span>
-          <span class="icon">${likes}</span>
+          <span class="icon likes">${likes}</span>
           <ion-icon class="icon likes" name="heart"></ion-icon>
           <ion-icon class="icon" name="repeat"></ion-icon>
           <ion-icon class="icon" name="flag"></ion-icon>
         </form>
       </footer>
     `);
+
+    if (likes === 1) {
+      $article.find(".likes").addClass("liked");
+    }
 
     return $article;
   }
@@ -79,7 +83,6 @@ var refreshTweets = function () {
     $section.empty();
 
     for (let i = tweetArr.length - 1; i >= 0; i--) {
-      console.log(tweetArr[i]);
       let $article = createTweetElement(tweetArr[i], i);
       $("#cur-tweets").append($article);
     }

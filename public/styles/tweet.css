@@ -51,6 +51,10 @@ article.tweet .icon {
   color: #00a087;
 }
 
+article.tweet .icon.likes.liked {
+  color: red;
+}
+
 article.tweet:hover {
   border: solid 1px #aaa;
 }
