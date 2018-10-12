@@ -7,6 +7,7 @@ const simulateDelay = require("./util/simulate-delay");
 module.exports = function makeDataHelpers(db) {
   return {
 
+    // Toggles 'tweet' between 0 and 1 likes displayed
     updateTweet: function(tweet) {
       let id = tweet._id;
       let likes = tweet.likes;

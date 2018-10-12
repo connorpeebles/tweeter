@@ -1,4 +1,12 @@
+// refreshTweets grabs all of the tweets from the MongoDB and displays them in
+// chronological order in the cur-tweets section of index.html.
+// It is called when the page is loaded, when a new tweet is posted, and when
+// a tweet is liked/unliked.
+
 var refreshTweets = function () {
+
+  // createTweetElement returns the html article which displays an individual
+  // tweet
 
   function createTweetElement(tweet, index) {
 
@@ -8,11 +16,14 @@ var refreshTweets = function () {
     const text = tweet.content.text;
     const ms = tweet.created_at;
     const likes = tweet.likes;
-    const retweets = tweet.retweets;
 
     const curDate = new Date();
     const curMs = curDate.getTime();
     const msDif = curMs - ms;
+
+    // calculates the time difference of the current time and the time at
+    // which the tweet was created, in minutes, hours, days, weeks, and years,
+    // and sets 'time' according to the differences
 
     const minDif = msDif / 1000 / 60;
     const hrDif = minDif / 60;
@@ -46,6 +57,8 @@ var refreshTweets = function () {
       time = `${Math.floor(yearDif)} years ago`;
     }
 
+    // creates the article and appends the header, body, and footer
+
     let $article = $("<article>").addClass("tweet");
 
     $article.append(`
@@ -78,6 +91,10 @@ var refreshTweets = function () {
     return $article;
   }
 
+  // renderTweets calls createTweetElement on each tweet in tweetArr, and
+  // appends each returned article to the cur-tweets html section, after
+  // emptying cur-tweets
+
   function renderTweets(tweetArr){
     let $section = $("#cur-tweets");
     $section.empty();
@@ -87,6 +104,9 @@ var refreshTweets = function () {
       $("#cur-tweets").append($article);
     }
   }
+
+  // loadTweets obtains all the tweets from the database, and then calls
+  // renderTweets on the array
 
   function loadTweets() {
     $.getJSON("/tweets/")

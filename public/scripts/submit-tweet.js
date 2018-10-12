@@ -1,3 +1,6 @@
+// submits POST request to make a new tweet and then refreshes the cur-tweets
+// section, or appropriate error message drops down
+
 $(function() {
   let $form = $(".new-tweet form");
 

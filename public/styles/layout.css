@@ -3,6 +3,7 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
 html {
   box-sizing: border-box;
 }
@@ -33,17 +34,27 @@ main {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
+/*
+ * Responsively shrinks the width of the main area as browswer width shrinks,
+ * to a minimum width of 420px.
+ */
+
 @media (max-width: 600px){
   main {
     width: 100%;
   }
 }
-@media (max-width: 400px){
+@media (max-width: 420px){
   main{
-    width: 400px;
+    width: 420px;
   }
 }
-@media (max-device-width: 400px){
+
+/*
+ * Makes the main area 100% of the width for mobile phones, and increases the font size
+ */
+
+@media (max-device-width: 420px){
   main{
     width: 100%;
     font-size: 200%;

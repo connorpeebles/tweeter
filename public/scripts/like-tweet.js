@@ -1,3 +1,6 @@
+// makes a PUT request to like/unlike a tweet when the user clicks the heart
+// icon
+
 $(function() {
   $("#cur-tweets").on("click", ".likes", function(event) {
     let $form = $(this).closest("form");
@@ -10,5 +13,4 @@ $(function() {
     ;
 
   });
-
 });

@@ -13,7 +13,7 @@ app.use(express.static("public"));
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
-// Mongo setup
+// Mongo setup:
 
 const MongoClient = require("mongodb").MongoClient;
 const MONGODB_URI = "mongodb://localhost:27017/tweeter";
@@ -35,8 +35,6 @@ MongoClient.connect(MONGODB_URI, (err, db) => {
 
 // The in-memory database of tweets. It's a basic object with an array in it.
 // const db = require("./lib/in-memory-db");
-
-// console.log(db);
 
 // The `data-helpers` module provides an interface to the database of tweets.
 // This simple interface layer has a big benefit: we could switch out the
