@@ -12,7 +12,7 @@ Tweeter is a simple, single-page Twitter clone.
 
 ## Features
 
-- Displays tweets (stored in a MongoDB) from newest to oldest
+- Displays tweets (stored using MongoDB) from newest to oldest
 - Compose a new tweet and submit it to the database, which then refreshes the displayed tweets using AJAX
 - Character-counter live updates as the user adds/removes text from the Compose Tweet block
 - Empty tweets or tweets over the 140 character limit result in a drop-down error message when a user attempts to submit them
