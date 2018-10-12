@@ -61,9 +61,9 @@ var refreshTweets = function () {
 
     $article.append(`
       <footer>
-        <form class="form-likes" method="POST" action="/tweets/${index}">
+        <form class="form-likes" method="POST" action="/tweets/${index}?_method=PUT">
           <span>${time}</span>
-          <span class="icon likes">${likes}</span>
+          <span class="icon">${likes}</span>
           <ion-icon class="icon likes" name="heart"></ion-icon>
           <ion-icon class="icon" name="repeat"></ion-icon>
           <ion-icon class="icon" name="flag"></ion-icon>

@@ -25,7 +25,6 @@ module.exports = function makeDataHelpers(db) {
             likes: output
           }
         });
-      console.log(tweet);
       },
 
 

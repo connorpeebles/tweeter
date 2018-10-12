@@ -10,6 +10,9 @@ const app           = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
+
 // Mongo setup
 
 const MongoClient = require("mongodb").MongoClient;

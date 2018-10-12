@@ -45,9 +45,8 @@ module.exports = function(DataHelpers) {
     });
   });
 
-  tweetsRoutes.post("/:index", function(req, res) {
+  tweetsRoutes.put("/:index", function(req, res) {
     const index = req.params.index;
-    console.log(index);
 
     DataHelpers.getTweets((err, tweets) => {
       let tweet = tweets[index];
@@ -57,14 +56,6 @@ module.exports = function(DataHelpers) {
     });
 
     res.status(200).send();
-
-
-    // const tweets = DataHelpers.getTweets((err, tweets) => {
-    //   return json(tweets[index]);
-    // });
-    // console.log("index:", index);
-    // console.log("tweets:", typeof(tweets));
-
   });
 
   return tweetsRoutes;

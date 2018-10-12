@@ -3,7 +3,7 @@ $(function() {
     let $form = $(this).closest("form");
     let action = $form.attr("action");
 
-    $.post(action)
+    $.ajax({url: action, type: "PUT"})
      .then(function() {
         return refreshTweets();
       })
