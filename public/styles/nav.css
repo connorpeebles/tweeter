@@ -38,3 +38,19 @@
   opacity: 1;
   color: black;
 }
+
+@media (max-width: 400px){
+  #nav-bar .header {
+    position: absolute;
+  }
+  #nav-bar .compose {
+    position: absolute;
+    margin-left: 7em;
+  }
+}
+
+@media (max-device-width: 400px){
+  #nav-bar .header {
+    font-size: 400%;
+  }
+}
