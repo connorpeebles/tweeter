@@ -5,8 +5,9 @@ $(function() {
 
     $.post(action)
      .then(function() {
-      refreshTweets();
-    });
+        return refreshTweets();
+      })
+    ;
 
   });
 

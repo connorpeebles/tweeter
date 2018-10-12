@@ -9,13 +9,20 @@ module.exports = function makeDataHelpers(db) {
 
     updateTweet: function(tweet) {
       let id = tweet._id;
-      let likes = tweet.likes + 1;
+      let likes = tweet.likes;
+      let output;
+
+      if (likes === 0) {
+        output = 1;
+      } else {
+        output = 0;
+      }
 
       db.collection("tweets").update(
         {_id: id},
         {$set:
           {
-            likes: likes
+            likes: output
           }
         });
       console.log(tweet);
